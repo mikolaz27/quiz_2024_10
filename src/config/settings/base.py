@@ -3,7 +3,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-
 # Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -18,6 +17,8 @@ INSTALLED_APPS = [
     "common",
     "quiz",
 ]
+
+AUTH_USER_MODEL = "accounts.Gamer"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -80,7 +81,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
