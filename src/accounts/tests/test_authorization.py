@@ -1,11 +1,9 @@
 import unittest
 from http import HTTPStatus
-from http.client import responses
 
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 from django.urls import reverse
-from IPython import embed
 
 
 class TestAuthGamer(TestCase):
