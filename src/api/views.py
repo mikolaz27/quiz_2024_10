@@ -1,5 +1,3 @@
-from msilib.schema import ListView
-
 from django.contrib.auth import get_user_model
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.viewsets import ModelViewSet
