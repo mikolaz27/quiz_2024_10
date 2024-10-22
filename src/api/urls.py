@@ -35,4 +35,5 @@ urlpatterns = [
     path("docs/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
     path("quiz/<int:pk>/question/<int:order>/", QuestionDetailView.as_view(), name="question_details"),
     path("quiz/", QuizListView.as_view(), name="quiz_list"),
+    path("auth/", include("djoser.urls.jwt")),
 ]
