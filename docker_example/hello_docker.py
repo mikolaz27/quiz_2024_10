@@ -15,3 +15,10 @@ while True:
 
 # docker run --rm -it -d --name my_cont  my_image
 #  docker exec -it quiz_cont /bin/sh
+
+
+# docker run --rm -it --name my_cont -p 8010:8008  quiz_image
+
+
+# docker run --rm -it --name my_cont -p 8010:8000 -v D:\Hillel\quiz_2024_10\quiz_2024_10\src:/quiz/src
+# quiz_image ./commands/start_server_dev.sh
