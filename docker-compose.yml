@@ -24,6 +24,20 @@ services:
     env_file:
       - .env
 
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_container
+    restart: on-failure
+    env_file:
+      - .env
+    ports:
+      - '5000:80'
+    volumes:
+      - pg_admin:/var/lib/pgadmin
+    depends_on:
+      - postgres
+
+
 #  nginx:
 #    ...
 #  redis:
@@ -31,3 +45,4 @@ services:
 
 volumes:
   pg_data: { }
+  pg_admin: { }
