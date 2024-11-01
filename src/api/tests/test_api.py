@@ -1,5 +1,6 @@
 import unittest
 from http import HTTPStatus
+from unittest.mock import ANY
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase
@@ -63,5 +64,5 @@ class TestApi(TestCase):
         self.assertEqual(response.status_code, HTTP_200_OK)
         self.assertEqual(
             response.data,
-            [{"id": 1, "title": "Test", "description": "Some description", "level": "Medium", "questions_count": 1}],
+            [{"id": ANY, "title": "Test", "description": "Some description", "level": "Medium", "questions_count": 1}],
         )
