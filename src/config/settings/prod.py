@@ -8,7 +8,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'ec2-13-51-13-249.eu-north-1.compute.amazonaws.com']
 
 
 DATABASES = {
@@ -20,7 +20,6 @@ DATABASES = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-# /var/www/quiz/static
 
 STATIC_ROOT = BASE_DIR / 'static/'  # NOQA
 STATIC_URL = "static/"

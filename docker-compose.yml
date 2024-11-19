@@ -14,54 +14,54 @@ services:
       - media_content:/quiz/src/media
     env_file:
       - .env
-    depends_on:
-      - postgres
+#    depends_on:
+#      - postgres
 
-  postgres:
-    image: postgres:16.4
-    ports:
-      - "5433:5432"
-    volumes:
-      - pg_data:/var/lib/postgresql/data
-    env_file:
-      - .env
+#  postgres:
+#    image: postgres:16.4
+#    ports:
+#      - "5433:5432"
+#    volumes:
+#      - pg_data:/var/lib/postgresql/data
+#    env_file:
+#      - .env
 
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin_container
-    restart: on-failure
-    env_file:
-      - .env
-    ports:
-      - '5000:80'
-    volumes:
-      - pg_admin:/var/lib/pgadmin
-    depends_on:
-      - postgres
-
-  mongodb:
-    image: mongo:8-noble
-    container_name: mongo_db_container
-    ports:
-      - '27017:27017'
-    volumes:
-      - mongo_data:/data/db
-    env_file:
-      - .env
-    restart: on-failure
-
-  mongoadmin:
-    image: mongo-express
-    restart: on-failure
-    container_name: mongo_admin_container
-    ports:
-      - '8091:8081'
-    env_file:
-      - .env
-    links:
-      - mongodb
-    depends_on:
-      - mongodb
+#  pgadmin:
+#    image: dpage/pgadmin4
+#    container_name: pgadmin_container
+#    restart: on-failure
+#    env_file:
+#      - .env
+#    ports:
+#      - '5000:80'
+#    volumes:
+#      - pg_admin:/var/lib/pgadmin
+#    depends_on:
+#      - postgres
+#
+#  mongodb:
+#    image: mongo:8-noble
+#    container_name: mongo_db_container
+#    ports:
+#      - '27017:27017'
+#    volumes:
+#      - mongo_data:/data/db
+#    env_file:
+#      - .env
+#    restart: on-failure
+#
+#  mongoadmin:
+#    image: mongo-express
+#    restart: on-failure
+#    container_name: mongo_admin_container
+#    ports:
+#      - '8091:8081'
+#    env_file:
+#      - .env
+#    links:
+#      - mongodb
+#    depends_on:
+#      - mongodb
 
   nginx:
     image: nginx:1.27
@@ -77,69 +77,69 @@ services:
     depends_on:
       - backend
 
-  redis:
-    image: redis
-    env_file:
-      - .env
-    restart: on-failure
-    depends_on:
-      - backend
-
-  celery:
-    build: ./
-    container_name: celery_container
-    command: ./commands/start_celery.sh
-    restart: on-failure
-    volumes:
-      - ./src:/quiz
-      - ./commands:/quiz/commands
-    env_file:
-      - .env
-    depends_on:
-      - redis
-      - backend
-
-  celerybeat:
-    build: ./
-    container_name: celerybeat_container
-    command: ./commands/start_celerybeat.sh
-    restart: on-failure
-    volumes:
-      - ./src:/quiz
-      - ./commands:/quiz/commands
-    env_file:
-      - .env
-    depends_on:
-      - redis
-      - backend
-
-  flower:
-    build: ./
-    container_name: flower_container
-    volumes:
-      - ./src:/quiz
-    env_file:
-      - .env
-    command: celery -A config flower --broker=redis://redis
-    ports:
-      - "5556:5555"
-    depends_on:
-      - celery
-
-  redisadmin:
-    image: redislabs/redisinsight
-    container_name: rediaadmin
-    restart: on-failure
-    ports:
-      - "8001:8001"
-    env_file:
-      - .env
-    depends_on:
-      - redis
+#  redis:
+#    image: redis
+#    env_file:
+#      - .env
+#    restart: on-failure
+#    depends_on:
+#      - backend
+#
+#  celery:
+#    build: ./
+#    container_name: celery_container
+#    command: ./commands/start_celery.sh
+#    restart: on-failure
+#    volumes:
+#      - ./src:/quiz
+#      - ./commands:/quiz/commands
+#    env_file:
+#      - .env
+#    depends_on:
+#      - redis
+#      - backend
+#
+#  celerybeat:
+#    build: ./
+#    container_name: celerybeat_container
+#    command: ./commands/start_celerybeat.sh
+#    restart: on-failure
+#    volumes:
+#      - ./src:/quiz
+#      - ./commands:/quiz/commands
+#    env_file:
+#      - .env
+#    depends_on:
+#      - redis
+#      - backend
+#
+#  flower:
+#    build: ./
+#    container_name: flower_container
+#    volumes:
+#      - ./src:/quiz
+#    env_file:
+#      - .env
+#    command: celery -A config flower --broker=redis://redis
+#    ports:
+#      - "5556:5555"
+#    depends_on:
+#      - celery
+#
+#  redisadmin:
+#    image: redislabs/redisinsight
+#    container_name: rediaadmin
+#    restart: on-failure
+#    ports:
+#      - "8001:8001"
+#    env_file:
+#      - .env
+#    depends_on:
+#      - redis
 
 volumes:
-  pg_data: { }
-  pg_admin: { }
-  mongo_data: { }
+#  pg_data: { }
+#  pg_admin: { }
+#  mongo_data: { }
   static_content: { }
   media_content: { }
